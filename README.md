@@ -8,6 +8,12 @@ Kirjasto luo suomalaisen pankkiviivakoodistandardin mukaisen viivakoodin. Tulost
 Kirjasto käyttää viivakoodin piirtämiseen [JsBarcode](https://github.com/karrirasinmaki/JsBarcode)-viivakoodikirjaston muokattua versiota.
 
 ##Käyttö
+Lataa Pankkiviivakoodi-kirjaston paketoitu versio ([dist/pankkiviivakoodi-all.min.js](https://raw.githubusercontent.com/karrirasinmaki/Pankkiviivakoodi/master/dist/pankkiviivakoodi-all.min.js)) ja linkitä se sivullesi:
+```
+<script src="pankkiviivakoodi-all.min.js"></script>
+```
+
+Viivakoodi luodaan seuraavan komennon mukaisesti:
 ```
 Pankkiviivakoodi.luo( 
   HTML kuvaelementti, 
@@ -29,22 +35,20 @@ Pankkiviivakoodi.luo(
         <meta charset="utf-8">
         <title>Pankkiviivakoodi</title>
         
-        <script src="lib/JsBarcode/JsBarcode.js"></script>
-        <script src="lib/JsBarcode/CODE128.js"></script>
-        <script src="pankkiviivakoodi.js"></script>
+        <script src="https://rawgit.com/karrirasinmaki/Pankkiviivakoodi/master/dist/pankkiviivakoodi-all.min.js"></script>
     </head>
     <body>
         
-        <img id="viivakoodi">
+        <img id="barcode">
         
         <script>
             Pankkiviivakoodi.luo(
-                document.querySelector("#viivakoodi"), // Kuvaelementti
-                "FI79 4405 2020 0360 82",              // IBAN tilinumero
-                4883,                                  // Eurot
-                15,                                    // Sentit
-                "86851 62596 19897",                   // Viite
-                12, 6, 2010                            // Päivämäärä 12.6.2010 (päivä, kuukausi, vuosi) 
+                document.querySelector("#barcode"), // Kuvaelementti
+                "FI79 4405 2020 0360 82",           // IBAN tilinumero
+                4883,                               // Eurot
+                15,                                 // Sentit
+                "86851 62596 19897",                // Viite
+                12, 6, 2010                         // Päivämäärä 12.6.2010 (päivä, kuukausi, vuosi) 
             );
         </script>
     </body>
