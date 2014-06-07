@@ -51,7 +51,7 @@ Pankkiviivakoodi.luo(
 </html>
 ```
 Oheinen pätkä tulostaa seuraavanlaisen kuvan:    
-![Esimerkkiviivakoodi](https://raw.github.com/karrirasinmaki/Pankkiviivakoodi/esimerkkiviivakoodi.png)
+![Esimerkkiviivakoodi](https://raw.githubusercontent.com/karrirasinmaki/Pankkiviivakoodi/master/esimerkkiviivakoodi.png)
 
 ##Lähteet
 - [Pankkiviivakoodi-opas v.5.3 | Finanssialan Keskusliitto (7.6.2014)](http://www.fkl.fi/teemasivut/sepa/tekninen_dokumentaatio/Dokumentit/Pankkiviivakoodi-opas.pdf)
