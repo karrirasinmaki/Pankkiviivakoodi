@@ -46,9 +46,9 @@
 		img.style.height = "10mm";
 		img.style.width = "105mm";
 		JsBarcode(img, data, {
-			width: 1, 
-			height: img.offsetHeight, 
-			totalWidth: img.offsetWidth,
+			width: 4, 
+			height: img.offsetHeight,
+            quite: 20,
 			format: "CODE128C"
 		});
 	};
