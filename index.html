@@ -12,13 +12,26 @@
     </head>
     <body>
         
+        <b>Pankkiviivakoodi</b><br>
         <img id="barcode">
+        <br><br>
+        <b>Virheellinen pankkiviivakoodi</b><br>
+        <img id="errorcode">
         
         <script>
             Pankkiviivakoodi.luo(
                 document.querySelector("#barcode"), // Kuvaelementti
                 "FI79 4405 2020 0360 82",           // IBAN tilinumero
                 4883,                               // Eurot
+                15,                                 // Sentit
+                "86851 62596 19897",                // Viite
+                12, 6, 2010                         // Päivämäärä 12.6.2010 (päivä, kuukausi, vuosi) 
+            );
+            
+            Pankkiviivakoodi.luo(
+                document.querySelector("#errorcode"), // Kuvaelementti
+                "FI79 4405 2020 0360 8",           // IBAN tilinumero
+                4883123,                               // Eurot
                 15,                                 // Sentit
                 "86851 62596 19897",                // Viite
                 12, 6, 2010                         // Päivämäärä 12.6.2010 (päivä, kuukausi, vuosi) 
