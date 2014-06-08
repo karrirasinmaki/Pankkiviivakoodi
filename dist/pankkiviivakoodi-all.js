@@ -383,6 +383,10 @@ function CODE128C(string) {
             drawGeneralErrorImage(img);
 			throw "Viitenumero liian pitkä (max. 20).";
         }
+        if (viite.length < 4) {
+            drawGeneralErrorImage(img);
+            throw "Viitenumero liian lyhyt (min. 4).";
+        }
         if (iban.length != 16) {
             drawGeneralErrorImage(img);
             throw "IBAN tilinumero virheellinen.";
