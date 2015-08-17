@@ -59,3 +59,29 @@ Oheinen pätkä tulostaa seuraavanlaisen kuvan:
 
 ##Lähteet
 - [Pankkiviivakoodi-opas v.5.3 | Finanssialan Keskusliitto (7.6.2014)](http://www.fkl.fi/teemasivut/sepa/tekninen_dokumentaatio/Dokumentit/Pankkiviivakoodi-opas.pdf)
+
+
+Jatkokehittäjille
+=================
+Kloonaa repo ja sen alamoduulit komennolla:
+```
+git clone --recursive {{KLOONAUS_URL}}
+```
+Tai päivitä jo kloonatun repon alamoduulit:
+```
+git submodule update --init --recursive
+```
+
+##Käännös ja paketointi
+Projektissa ei (vielä tällä hetkellä) ole sen kummempia paketinhallintavirityksiä mukana. Käännökseen tarvitset [Node.js](https://nodejs.org/) -alustan ja sille [node-minify](https://github.com/srod/node-minify)-paketin.
+
+Voit asentaa *node-minify* -paketin globaalisti näin:
+```
+npm install -g node-minify
+```
+
+Käännä ja paketoi Pankkiviivakoodi ja sen alamoduulit yhteen pakattuun tiedostoon komentamalla projektin juuressa:
+```
+node build.js
+```
+Käännös luo kansioon */dist* kaksi tiedostoa: *pankkiviivakoodi-all.js* sekä minimoitu versio *pankkiviivakoodi-all.min.js*
