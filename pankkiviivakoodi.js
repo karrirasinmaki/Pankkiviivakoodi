@@ -111,11 +111,12 @@
 		if (typeof viite !== "number") {
 		    viite = parseInt(viite.replace(/ /g, ""));
 		}
+		iban = (""+iban).replace(/ /g, "")
         
         checkStrictValidity(img, iban, eurot, sentit, viite, paiva, kuukausi, vuosi);
         checkLooseValidity(img, iban, eurot, sentit, viite, paiva, kuukausi, vuosi);
         
-		iban = (""+iban).replace("FI", "").replace(/ /g, "");
+		iban = iban.replace("FI", "");
 		
 		eurot = leadingZerosNum("000000", eurot);
 		sentit = leadingZerosNum("00", sentit);
