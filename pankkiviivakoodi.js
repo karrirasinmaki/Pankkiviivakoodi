@@ -44,17 +44,21 @@
      * Check if parameters are valid. Print error image (and throw exception) if not valid.
      */
     var checkStrictValidity = function(img, iban, eurot, sentit, viite, paiva, kuukausi, vuosi) {
-        if (viite.length > 20) {
+        var giveError = function(msg) {
             drawGeneralErrorImage(img);
-			throw "Viitenumero liian pitkä (max. 20).";
+            throw msg;
+        };
+        if (viite.length > 20) {
+            giveError("Viitenumero liian pitkä (max. 20).");
         }
         if (viite.length < 4) {
-            drawGeneralErrorImage(img);
-            throw "Viitenumero liian lyhyt (min. 4).";
+            giveError("Viitenumero liian lyhyt (min. 4).");
         }
-        if (iban.length != 16) {
-            drawGeneralErrorImage(img);
-            throw "IBAN tilinumero virheellinen.";
+        if (iban.length != 18) {
+            giveError("IBAN tilinumero virheellinen.");
+        }
+        if (iban.substring(0, 2) !== "FI") {
+            giveError("IBAN tilinumero ei FI-alkuinen.");
         }
     };
     
@@ -72,15 +76,15 @@
                 console.warn(msg + " " + looseExtraMsg);
             }
         };
-		if ((""+eurot).length > 6) {
+        if (eurot < 0 || eurot > 999999) {
 			eurot = 0;
 			sentit = 0;
-            giveError("Laskun summa on liian suuri tulostettavaksi viivakoodille.", "Tulostetaan summa 00000000.");
-		}
-		else if ((""+sentit).length > 2) {
-			giveError("Annetut sentit ovat enemmän kuin 99.", "Tulostetaan summa 00000000.");
+            giveError("Eurot ohi lukualueen (lukualue: 000000...999999)", "Tulostetaan summa 00000000.");
+        }
+		else if (sentit < 0 || sentit > 99) {
 			eurot = 0;
 			sentit = 0;
+            giveError("Sentit ohi lukualueen (lukualue: 00...99)", "Tulostetaan summa 00000000.");
 		}
     };
     
@@ -99,15 +103,19 @@
 		img.style.height = "10mm";
 		img.style.width = "105mm";
         
-		iban = (""+iban).replace("FI", "").replace(/ /g, "");
-        
 		if (arguments.length < 8) {
             drawGeneralErrorImage(img);
-			throw "Unohdit antaa kaikki function vaativat parametrit.";
+			throw "Unohdit antaa kaikki function vaatimat parametrit.";
+		}
+		
+		if (typeof viite !== "number") {
+		    viite = parseInt(viite.replace(/ /g, ""));
 		}
         
         checkStrictValidity(img, iban, eurot, sentit, viite, paiva, kuukausi, vuosi);
         checkLooseValidity(img, iban, eurot, sentit, viite, paiva, kuukausi, vuosi);
+        
+		iban = (""+iban).replace("FI", "").replace(/ /g, "");
 		
 		eurot = leadingZerosNum("000000", eurot);
 		sentit = leadingZerosNum("00", sentit);
